@@ -171,7 +171,7 @@ html{
 }
 .index-opacity{
     opacity: 0;
-    transition: opacity 1.5s ease;
+    transition: 1.5s ease;
 }
 .index-introduction{
     flex-direction: column;
@@ -367,6 +367,40 @@ html{
 }
 .reg p a:hover{
     text-decoration: underline;
+}
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--white);
+    border-top: 5px solid var(--green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.hidden {
+    display: none;
+    opacity: 0;
+}
+.fade-in {
+    display: block;
+    animation: preloaderanimation 1s ease-in-out forwards;
+}
+@keyframes preloaderanimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 

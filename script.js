@@ -14,17 +14,29 @@ const iconClose = document.querySelector('.icon-close');
 
 setTimeout(() => {
     navBar.style.animation = "slideInFromTop .5s ease-out forwards";
-  }, 0);
+  }, 1500);
 
   setTimeout(() => {
     indexIntroduction.style.animation = "fadeIn 1s ease forwards";
-  }, 500);
+  }, 2000);
 
   homeButtons.forEach((button, index) => {
     setTimeout(() => {
       button.classList.add('visible');
-    }, 1000 + index * 500); 
+    }, 2500 + index * 500); 
   });
+
+
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    const mainContent = document.getElementById("main-content");
+
+    setTimeout(() => {
+        preloader.style.display = "none"; 
+        mainContent.classList.remove("hidden");
+        mainContent.classList.add("fade-in");
+    }, 500);
+});
 
 
 registerLink.addEventListener('click', ()=>{
