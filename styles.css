@@ -1,0 +1,456 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+:root{
+    --green: #1e9632;
+    --black: #000000;
+    --shade1: #0c9721d6;
+    --white: #ffffff;
+    --shade2: rgba(7, 164, 25, 0.683);
+}
+html{
+    scroll-behavior: smooth;
+}
+.index-banner{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(Images/552afb2e-190f-41e3-8f13-9242954f278b.jpeg);
+    background-position: center;
+    background-size: cover;
+    overflow:visible;
+}
+.nav-bar{
+    display: flex;
+    padding: 0px 30px 4px 15px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--shade1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    animation-delay: 5s;
+}
+@keyframes slideInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+.home-text button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s ease;
+}
+.home-text button.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.nav-bar .icon{
+    font-size: 1.25em;
+    color: #fff;
+    position: absolute;
+    left: -22px;
+    top: 6px;
+}
+.logo-container{
+    width: 80px;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.campus-housing-hub-logo{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.nav-bar ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.nav-bar ul li{
+    margin-right: 50px;
+    position: relative;
+}
+.nav-bar ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0; 
+}
+.nav-bar ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%; 
+    bottom: 0; 
+    width: 0;
+    height: 2px; 
+    background-color: var(--white); 
+    transition: all 0.5s ease; 
+    transform: translateX(-50%); 
+}
+.nav-bar ul li a:hover::after {
+    width: 100%; 
+    left: 0;
+    transform: translateX(0); 
+}
+.nav-bar-btns{
+    margin:20px 0 25px 0;
+}
+.Login-button, .Sign-up-btn, .learn-more-btn{
+    padding: 7px 20px;
+    background-color: var(--shade1);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 10px;
+}
+.Login-button{
+    margin-right: 10px;
+    transition: linear .5s;
+    animation: log 1s linear infinite;
+}
+.learn-more-btn{
+    background-color: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+    transition: .2s ease-in;
+    display: flex;
+}
+.learn-more-btn:hover{
+    color: var(--white);
+    background-color: var(--green);
+    box-shadow: 0px 0px 19px 8px var(--green);
+}
+.learn-more-btn .icon{
+    font-size: 1.25em;
+}
+@keyframes log{
+    0%{transform: scale(1);}
+    35%{transform: scale(1.10);}
+    75%{transform: scale(1);} 
+    100%{transform: scale(1);}
+}
+.Login-button:hover, .Sign-up-btn:hover{
+    animation: none;
+    background-color: var(--white);
+    color: var(--green);
+    transition: .3s;
+    border: 2px solid var(--green);
+}
+.home-text, .index-introduction{
+    display: flex;
+    height: 91vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+.index-opacity{
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+.index-introduction{
+    flex-direction: column;
+    margin: 0;
+    height: auto;
+    transition: 1s ease;
+}
+.index-introduction h2{
+    color: var(--white);
+    font-size: 4.1rem;
+    text-align: center;
+    width: auto;
+    transition: .1s ease;
+}
+.index-introduction h2:hover{
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+}
+.index-introduction h2:hover span{
+    -webkit-text-stroke: 2px var(--shade1);
+    color: transparent;
+    font-weight: normal;
+}
+.home-text p{
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.home-text span{
+    color: var(--green);
+    font-weight: bolder;
+}
+.wrapper{
+    position: relative;
+    width: 0px;
+    height: 0px;
+    border: 2px solid var(--shade1);
+    border-radius: 25px;
+    backdrop-filter: blur(40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition:all .8s ease;
+    padding: 2rem 0 2rem 0;
+    margin-left: 7rem;
+}
+.wrapper.active-popup{
+    transform: scale(1);
+    width: 20rem;
+    height: auto;
+}
+.wrapper.active{
+    height: 30rem;
+    margin-top: 7rem;
+}
+.Login-button.active{
+    animation: none;
+}
+.wrapper.form{
+    width: 100%;
+    padding: 40px;
+}
+.wrapper .form.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+.wrapper.active .form.login{
+    transition: none;
+    transform: translateX(400px);
+}
+.wrapper .form.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(-400px);
+}
+.wrapper.active .form.register{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--shade1);
+    font-size: 1.5em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+.form h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid var(--green);
+    margin: 30px 0;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #fff;
+    line-height: 57px;
+}
+.rem{
+    font-size: .9em;
+    color: var(--white);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.rem label input{
+    accent-color: var(--green);
+    margin-right: 3px;
+}
+.rem a{
+    color: #ffffff;
+    text-decoration: none;
+}
+.rem a:hover{
+    text-decoration: underline;
+}
+.btn{
+    width: 100%;
+    height: 45px;
+    background: var(--green);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    border: 2px solid var(--white);
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    transition: .2s ease;
+}
+.btn:hover{
+    transform: scale(1.05);
+    background-color: var(--white);
+    color: var(--green);
+    border: solid var(--green);
+}
+.reg{
+    font-size: .9em;
+    color: var(--green);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+.reg p a{
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+}
+.reg p a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
